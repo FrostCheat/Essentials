@@ -7,13 +7,31 @@ description: Essentials is the essential plugin for Pocketmine-MP servers, provi
 author: frostcheat
 
 permissions:
-  essentials.command.ping:
-    default: true
   essentials.command.back:
     default: true
   essentials.command.back.bypass:
+    default: op
+  essentials.command.broadcast:
+    default: op
+  essentials.command.clear:
+    default: true
+  essentials.command.clear.other:
+    default: op
+  essentials.command.feed:
+    default: op
+  essentials.command.feed.other:
+    default: op
+  essentials.command.feed.bypass:
     default: op
   essentials.command.fly:
     default: op
   essentials.command.fly.other:
     default: op
+  essentials.command.heal:
+    default: op
+  essentials.command.heal.other:
+    default: op
+  essentials.command.heal.bypass:
+    default: op
+  essentials.command.ping:
+    default: true

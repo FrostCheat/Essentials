@@ -3,7 +3,11 @@
 namespace frostcheat\essentials;
 
 use frostcheat\essentials\commands\BackCommand;
+use frostcheat\essentials\commands\BroadcastCommand;
+use frostcheat\essentials\commands\ClearCommand;
+use frostcheat\essentials\commands\FeedCommand;
 use frostcheat\essentials\commands\FlyCommand;
+use frostcheat\essentials\commands\HealCommand;
 use frostcheat\essentials\commands\PingCommand;
 
 use CortexPE\Commando\PacketHooker;
@@ -35,9 +39,14 @@ class Loader extends PluginBase {
 
         $this->saveDefaultConfig();
 
+        $this->unRegisterCommands(["clear"]);
         $this->registerCommands([
             new BackCommand(),
+            new BroadcastCommand(),
+            new ClearCommand(),
+            new FeedCommand(),
             new FlyCommand(),
+            new HealCommand(),
             new PingCommand(),
         ]);
 
@@ -48,6 +57,14 @@ class Loader extends PluginBase {
         foreach ($commands as $command) {
             if ($command instanceof Command) {
                 $this->getServer()->getCommandMap()->register("essentials", $command);
+            }
+        }
+    }
+
+    public function unRegisterCommands(array $commands): void {
+        foreach ($commands as $command) {
+            if (($c = $this->getServer()->getCommandMap()->getCommand($command)) !== null) {
+                $this->getServer()->getCommandMap()->unregister($c);
             }
         }
     }

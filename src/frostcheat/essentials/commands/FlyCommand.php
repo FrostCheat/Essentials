@@ -26,9 +26,13 @@ class FlyCommand extends BaseCommand {
         if (isset($args["player"])) {
             $p = Loader::getInstance()->getServer()->getPlayerExact($args["player"]);
             if ($p instanceof Player) {
-                $this->changeFly($p, $sender);
+                if ($sender->hasPermission("essentials.command.fly.other")) {
+                    $this->changeFly($p, $sender);
+                } else {
+                    $sender->sendMessage(TextFormat::colorize("&cYou do not have permission to activate fly mode for other people."));
+                }
             } else {
-                $sender->sendMessage(TextFormat::colorize("&cPlayer is not online"));
+                $sender->sendMessage(TextFormat::colorize("&cPlayer is not online."));
             }
             return;
         }
