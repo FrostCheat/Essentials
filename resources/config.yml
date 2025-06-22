@@ -1,7 +1,7 @@
  # don't touch this
 config-version: 1
 
-coordinates: true
+showCoordinates: true
 
 # built-in cooldowns: (in seconds)
 heal.cooldown: 300

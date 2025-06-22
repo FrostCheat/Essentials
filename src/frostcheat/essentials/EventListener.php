@@ -40,7 +40,7 @@ class EventListener implements Listener {
     public function onJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
 
-        if ((bool) Loader::getInstance()->getConfig()->get("coordinates", true)) {
+        if ((bool) Loader::getInstance()->getConfig()->get("showCoordinates", true)) {
             $pk = GameRulesChangedPacket::create(['showCoordinates' => new BoolGameRule(true, false)]);
             $player->getNetworkSession()->sendDataPacket($pk);
         }
