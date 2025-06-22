@@ -2,10 +2,15 @@
 
 namespace frostcheat\essentials;
 
-use CortexPE\Commando\PacketHooker;
+use frostcheat\essentials\commands\BackCommand;
+use frostcheat\essentials\commands\FlyCommand;
 use frostcheat\essentials\commands\PingCommand;
+
+use CortexPE\Commando\PacketHooker;
+
 use JackMD\ConfigUpdater\ConfigUpdater;
 use JackMD\UpdateNotifier\UpdateNotifier;
+
 use pocketmine\command\Command;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
@@ -31,6 +36,8 @@ class Loader extends PluginBase {
         $this->saveDefaultConfig();
 
         $this->registerCommands([
+            new BackCommand(),
+            new FlyCommand(),
             new PingCommand(),
         ]);
 
