@@ -9,3 +9,11 @@ author: frostcheat
 permissions:
   essentials.command.ping:
     default: true
+  essentials.command.back:
+    default: true
+  essentials.command.back.bypass:
+    default: op
+  essentials.command.fly:
+    default: op
+  essentials.command.fly.other:
+    default: op

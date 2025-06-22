@@ -2,8 +2,11 @@
 
 namespace frostcheat\essentials;
 
+use frostcheat\essentials\sessions\Session;
+use frostcheat\essentials\sessions\SessionManager;
 use frostcheat\essentials\utils\ReflectionUtils;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\player\PlayerInfo;
 
@@ -16,5 +19,18 @@ class EventListener implements Listener {
             "username", 
             str_replace(" ","_", $event->getPlayerInfo()->getUsername())
         );
+    }
+
+    public function onJoin(PlayerLoginEvent $event): void {
+        $player = $event->getPlayer();
+        $session = SessionManager::getInstance()->getSession($player->getName());
+
+        if ($session === null) {
+            SessionManager::getInstance()->addSession(new Session($player->getName()));
+        } else {
+            if ($session->getName() !== $player->getName()) {
+                $session->setName($player->getName());
+            }
+        }
     }
 }
