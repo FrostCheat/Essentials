@@ -1,6 +1,8 @@
  # don't touch this
 config-version: 1
 
+coordinates: true
+
 # built-in cooldowns: (in seconds)
 heal.cooldown: 300
 feed.cooldown: 120

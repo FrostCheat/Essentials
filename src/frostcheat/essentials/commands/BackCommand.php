@@ -43,7 +43,7 @@ class BackCommand extends BaseCommand {
         if ($event->isCancelled()) return;
 
         if (!$sender->hasPermission("essentials.command.back.bypass")) {
-            $session->addCooldown("back", time() + Loader::getInstance()->getConfig()->get("back.cooldown", 60));
+            $session->addCooldown("back", time() + (int) Loader::getInstance()->getConfig()->get("back.cooldown", 60));
         }
 
         $sender->teleport($event->getPosition());
