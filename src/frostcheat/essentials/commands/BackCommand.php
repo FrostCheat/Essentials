@@ -6,6 +6,7 @@ use CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\events\PlayerBackEvent;
 use frostcheat\essentials\Loader;
 use frostcheat\essentials\sessions\SessionManager;
+use frostcheat\essentials\utils\Utils;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
@@ -28,7 +29,7 @@ class BackCommand extends BaseCommand {
         }
 
         if ($session->getCooldown("back") > time() && !$sender->hasPermission("essentials.command.back.bypass")) {
-            $sender->sendMessage(TextFormat::colorize("&cYou must wait " . ($session->getCooldown("back") - time()) . "s to run this command again."));
+            $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("back") - time()) . "s to run this command again."));
             return;
         }
 
