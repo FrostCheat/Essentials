@@ -3,6 +3,8 @@ config-version: 1
 
 showCoordinates: true
 
+saveTime: 600
+
 # built-in cooldowns: (in seconds)
 heal.cooldown: 300
 feed.cooldown: 120

@@ -49,7 +49,7 @@ class HealCommand extends BaseCommand {
         $session = SessionManager::getInstance()->getSession($sender->getName());
         if ($session !== null) {
             if ($session->getCooldown("heal") > time() && !$sender->hasPermission("essentials.command.heal.bypass")) {
-                $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("heal") - time()) . "s to run this command again."));
+                $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("heal") - time()) . " to run this command again."));
                 return;
             }
         }

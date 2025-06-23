@@ -49,7 +49,7 @@ class FeedCommand extends BaseCommand {
         $session = SessionManager::getInstance()->getSession($sender->getName());
         if ($session !== null) {
             if ($session->getCooldown("feed") > time() && !$sender->hasPermission("essentials.command.feed.bypass")) {
-                $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("feed") - time()) . "s to run this command again."));
+                $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("feed") - time()) . " to run this command again."));
                 return;
             }
         }

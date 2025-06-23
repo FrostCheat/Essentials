@@ -16,4 +16,8 @@ class SessionManager {
     public function getSession(string $name): ?Session {
         return $this->sessions[$name] ?? null;
     }
+
+    public function getAll(): array {
+        return $this->sessions;
+    }
 }

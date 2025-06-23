@@ -29,7 +29,7 @@ class BackCommand extends BaseCommand {
         }
 
         if ($session->getCooldown("back") > time() && !$sender->hasPermission("essentials.command.back.bypass")) {
-            $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("back") - time()) . "s to run this command again."));
+            $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("back") - time()) . " to run this command again."));
             return;
         }
 

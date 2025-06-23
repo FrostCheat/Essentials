@@ -9,14 +9,17 @@ use frostcheat\essentials\commands\FeedCommand;
 use frostcheat\essentials\commands\FlyCommand;
 use frostcheat\essentials\commands\HealCommand;
 use frostcheat\essentials\commands\PingCommand;
+use frostcheat\essentials\provider\Provider;
 
 use CortexPE\Commando\PacketHooker;
 
+use frostcheat\essentials\provider\task\SaveSessionsTask;
 use JackMD\ConfigUpdater\ConfigUpdater;
 use JackMD\UpdateNotifier\UpdateNotifier;
 
 use pocketmine\command\Command;
 use pocketmine\plugin\PluginBase;
+use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
 
 class Loader extends PluginBase {
@@ -26,6 +29,7 @@ class Loader extends PluginBase {
 
     public function onLoad(): void {
         self::setInstance($this);
+        Provider::getInstance()->init($this->getDataFolder());
     }
 
     public function onEnable(): void {
@@ -51,6 +55,11 @@ class Loader extends PluginBase {
         ]);
 
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+
+        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(): void {
+            Provider::getInstance()->saveAllSessions();
+        }), 20 * (int) $this->getConfig()->get("saveTime", 600));
+
     }
 
     public function registerCommands(array $commands): void {
@@ -67,5 +76,9 @@ class Loader extends PluginBase {
                 $this->getServer()->getCommandMap()->unregister($c);
             }
         }
+    }
+
+    public function onDisable(): void {
+        Provider::getInstance()->saveAllSessions();
     }
 }
