@@ -20,11 +20,4 @@ class SessionManager {
     public function getAll(): array {
         return $this->sessions;
     }
-
-    public function getSessionByNick(string $nick): ?Session {
-        foreach ($this->getAll() as $session) {
-            if ($session->getNick() === $nick) return $session;
-        }
-        return null;
-    }
 }

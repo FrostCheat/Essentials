@@ -12,6 +12,7 @@ use frostcheat\essentials\commands\GameModeCommand;
 use frostcheat\essentials\commands\HealCommand;
 use frostcheat\essentials\commands\NickCommand;
 use frostcheat\essentials\commands\PingCommand;
+use frostcheat\essentials\commands\TreeCommand;
 use frostcheat\essentials\Loader;
 
 use pocketmine\command\Command;
@@ -32,6 +33,7 @@ class CommandManager {
             new HealCommand(),
             new NickCommand(),
             new PingCommand(),
+            new TreeCommand()
         ];
     }
 

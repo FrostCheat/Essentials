@@ -27,8 +27,7 @@ class NickCommand extends BaseCommand {
         $nick = $args["nick"];
         if (!Player::isValidUserName($nick) ||
             str_contains($nick, " ") ||
-            SessionManager::getInstance()->getSession($nick) !== null ||
-            SessionManager::getInstance()->getSessionByNick($nick) !== null
+            SessionManager::getInstance()->getSession($nick) !== null
             ) {
                 $sender->sendMessage(TextFormat::colorize("&cThat nickname is not valid"));
                 return;
@@ -62,8 +61,7 @@ class NickCommand extends BaseCommand {
             return;
         }
 
-        $session = SessionManager::getInstance()->getSession($player->getName()) 
-        ?? SessionManager::getInstance()->getSessionByNick($player->getName());
+        $session = SessionManager::getInstance()->getSession($player->getName());
         if ($session === null) {
             $sender->sendMessage(TextFormat::colorize("&cError loading session..."));
             return;
@@ -79,7 +77,7 @@ class NickCommand extends BaseCommand {
 
             if (($isSelf && $sender->hasPermission("essentials.command.nick.reset")) ||
             (!$isSelf && $sender->hasPermission("essentials.command.nick.reset.other"))) {
-                ReflectionUtils::setProperty(Player::class, $player, "username", $event->getNick());
+                $player->setDisplayName($event->getNick());
                 $session->setNick(null);
                 $sender->sendMessage(TextFormat::colorize("{$player->getName()}'s nickname has been successfully reset"));
             } else {
@@ -94,15 +92,14 @@ class NickCommand extends BaseCommand {
 
         if ($event->isCancelled()) return;
 
-        ReflectionUtils::setProperty(Player::class, $player, "username", $event->getNick());
+        $player->setDisplayName($event->getNick());
         $session->setNick($event->getNick());
         if ($player->getName() === $sender->getName()) {
             $sender->sendMessage(TextFormat::colorize("&6Your nick has been set to &c{$event->getNick()}&r&6."));
-            $sender->sendMessage(TextFormat::colorize("&eTo return to a player's real nickname you must do /nick reset or /nick reset <player>"));
         } else {
             $sender->sendMessage(TextFormat::colorize("&6Set {$player->getName()}&6's nick to &r&c{$event->getNick()}&r&6."));
-            $sender->sendMessage(TextFormat::colorize("&eTo return to a player's real nickname you must do /nick reset or /nick reset <player>"));
             $player->sendMessage(TextFormat::colorize("&6Your nick has been set to &c{$event->getNick()}&r&6."));
         }
+        $sender->sendMessage(TextFormat::colorize("&eTo return to a player's real nickname you must do /nick reset or /nick reset <player>"));
     }
 }

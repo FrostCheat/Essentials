@@ -22,8 +22,7 @@ class BackCommand extends BaseCommand {
     }
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-        $session = SessionManager::getInstance()->getSession($sender->getName()) 
-        ?? SessionManager::getInstance()->getSessionByNick($sender->getName());
+        $session = SessionManager::getInstance()->getSession($sender->getName());
         if (!$sender instanceof Player || $session === null) {
             $sender->sendMessage(TextFormat::colorize("&cYou must be a player to execute this command."));
             return;
