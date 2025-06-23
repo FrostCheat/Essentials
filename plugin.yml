@@ -37,6 +37,10 @@ permissions:
     default: op
   essentials.command.fly.other:
     default: op
+  essentials.command.gamemode:
+    default: op
+  essentials.command.gamemode.other:
+    default: op
   essentials.command.heal:
     default: op
   essentials.command.heal.other:
