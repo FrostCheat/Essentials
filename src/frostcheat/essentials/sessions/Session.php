@@ -13,6 +13,7 @@ class Session {
     private array $cooldowns = [];
     private ?string $nick = null;
     private bool $vanished = false;
+    private ?string $lastPlayer = null;
     
     public function __construct(string $name) {
         $this->name = $name;
@@ -68,7 +69,7 @@ class Session {
 
     public function setVanished(bool $vanished): void {
         $this->vanished = $vanished;
-        
+
         $player = $this->getPlayer();
         if ($player === null) return;
 
@@ -89,5 +90,13 @@ class Session {
                 }
             }
         }
+    }
+
+    public function getLastPlayer(): ?string {
+        return $this->lastPlayer;
+    }
+
+    public function setLastPlayer(string $player): void {
+        $this->lastPlayer = $player;
     }
 }

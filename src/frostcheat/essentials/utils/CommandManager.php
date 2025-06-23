@@ -13,6 +13,8 @@ use frostcheat\essentials\commands\HealCommand;
 use frostcheat\essentials\commands\NearCommand;
 use frostcheat\essentials\commands\NickCommand;
 use frostcheat\essentials\commands\PingCommand;
+use frostcheat\essentials\commands\ReplyCommand;
+use frostcheat\essentials\commands\TellCommand;
 use frostcheat\essentials\commands\TreeCommand;
 use frostcheat\essentials\commands\VanishCommand;
 use frostcheat\essentials\Loader;
@@ -36,6 +38,8 @@ class CommandManager {
             new NearCommand(),
             new NickCommand(),
             new PingCommand(),
+            new ReplyCommand(),
+            new TellCommand(),
             new TreeCommand(),
             new VanishCommand()
         ];

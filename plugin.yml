@@ -62,6 +62,12 @@ permissions:
     default: true
   essentials.command.ping.other:
     default: true
+  essentials.command.reply:
+    default: true
+  essentials.command.tell:
+    default: true
+  essentials.tell.see:
+    default: op
   essentials.command.tree:
     default: op
   essentials.command.vanish:

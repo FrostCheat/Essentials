@@ -35,7 +35,7 @@ class Loader extends PluginBase {
 
         $this->saveDefaultConfig();
 
-        CommandManager::getInstance()->unRegisterCommands(["clear"]);
+        CommandManager::getInstance()->unRegisterCommands($this->getConfig()->get("un-registerCommands", []));
         CommandManager::getInstance()->registerCommands();
 
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);

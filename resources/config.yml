@@ -5,6 +5,9 @@ showCoordinates: true
 
 saveTime: 600
 
+# Admins can view all private messages
+tell-log: true
+
 # built-in cooldowns: (in seconds)
 heal.cooldown: 300
 feed.cooldown: 120
@@ -15,3 +18,11 @@ milk.cooldown: 120
 
 # timeout for teleport request (in seconds)
 tpa.timeout: 120
+
+un-registerCommands:
+  - "clear"
+  - "gamemode"
+  - "tell"
+  - "msg"
+  - "me"
+  - "w"

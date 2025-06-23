@@ -19,12 +19,14 @@ use pocketmine\player\PlayerInfo;
 class EventListener implements Listener {
 
     public function onPreLogin(PlayerPreLoginEvent $event): void {
-        ReflectionUtils::setProperty(
-            PlayerInfo::class, 
-            $event->getPlayerInfo(), 
-            "username", 
-            str_replace(" ","_", $event->getPlayerInfo()->getUsername())
-        );
+        if (str_contains($event->getPlayerInfo()->getUsername(), " ")) {
+            ReflectionUtils::setProperty(
+                PlayerInfo::class, 
+                $event->getPlayerInfo(), 
+                "username", 
+                str_replace(" ","_", $event->getPlayerInfo()->getUsername())
+            );
+        }
     }
 
     public function onLogin(PlayerLoginEvent $event): void {
