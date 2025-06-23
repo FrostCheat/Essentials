@@ -2,6 +2,7 @@
 
 namespace frostcheat\essentials\sessions;
 
+use frostcheat\essentials\Loader;
 use pocketmine\utils\SingletonTrait;
 
 class SessionManager {

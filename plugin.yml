@@ -64,3 +64,9 @@ permissions:
     default: true
   essentials.command.tree:
     default: op
+  essentials.command.vanish:
+    default: op
+  essentials.command.vanish.other:
+    default: op
+  essentials.vanish.see:
+    default: op

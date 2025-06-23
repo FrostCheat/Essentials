@@ -10,6 +10,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
+use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
 use pocketmine\player\Player;
@@ -45,6 +46,26 @@ class EventListener implements Listener {
         if ((bool) Loader::getInstance()->getConfig()->get("showCoordinates", true)) {
             $pk = GameRulesChangedPacket::create(['showCoordinates' => new BoolGameRule(true, false)]);
             $player->getNetworkSession()->sendDataPacket($pk);
+        }
+
+        foreach (SessionManager::getInstance()->getAll() as $session) {
+            $target = $session->getPlayer();
+    
+            if (
+                $target !== null &&
+                $target->getName() !== $player->getName() &&
+                $session->isVanished()
+            ) {
+                $player->hidePlayer($target);
+            }
+        }
+    }
+
+    public function onQuit(PlayerQuitEvent $event): void {
+        $player = $event->getPlayer();
+        $session = SessionManager::getInstance()->getSession($player->getName());
+        if ($session !== null && $session->isVanished()) {
+            $session->setVanished(false);
         }
     }
 

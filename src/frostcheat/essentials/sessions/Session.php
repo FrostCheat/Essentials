@@ -2,6 +2,8 @@
 
 namespace frostcheat\essentials\sessions;
 
+use frostcheat\essentials\Loader;
+use pocketmine\player\Player;
 use pocketmine\world\Position;
 
 class Session {
@@ -60,7 +62,32 @@ class Session {
         return $this->vanished;
     }
 
+    public function getPlayer(): ?Player {
+        return Loader::getInstance()->getServer()->getPlayerExact($this->getName());
+    }
+
     public function setVanished(bool $vanished): void {
         $this->vanished = $vanished;
+        
+        $player = $this->getPlayer();
+        if ($player === null) return;
+
+        $server = Loader::getInstance()->getServer();
+
+        if ($vanished) {
+            $server->removeOnlinePlayer($player);
+            foreach ($server->getOnlinePlayers() as $target) {
+                if (!$target->hasPermission("essentials.vanish.see")) {
+                    $target->hidePlayer($player);
+                }
+            }
+        } else {
+            $server->addOnlinePlayer($player);
+            foreach ($server->getOnlinePlayers() as $target) {
+                if (!$target->canSee($player)) {
+                    $target->showPlayer($player);
+                }
+            }
+        }
     }
 }

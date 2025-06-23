@@ -44,6 +44,10 @@ class Provider {
                 $session->setNick($data["nick"]);
             }
 
+            if (isset($data["vanished"])) {
+                $session->setVanished((bool) $data["vanished"]);
+            }
+
             SessionManager::getInstance()->addSession($session);
         }
     }
@@ -59,6 +63,7 @@ class Provider {
             ] : null,
             "cooldowns" => $session->getCooldowns(),
             "nick" => $session->getNick(),
+            "vanished" => $session->isVanished(),
         ];
 
         $file = $this->dataFolder . $session->getName() . ".json";
