@@ -1,0 +1,49 @@
+<?php
+
+namespace frostcheat\essentials\utils;
+
+use frostcheat\essentials\commands\essentials\EssentialsCommand;
+use frostcheat\essentials\commands\BackCommand;
+use frostcheat\essentials\commands\BroadcastCommand;
+use frostcheat\essentials\commands\ClearCommand;
+use frostcheat\essentials\commands\FeedCommand;
+use frostcheat\essentials\commands\FlyCommand;
+use frostcheat\essentials\commands\HealCommand;
+use frostcheat\essentials\commands\PingCommand;
+use frostcheat\essentials\Loader;
+
+use pocketmine\command\Command;
+use pocketmine\utils\SingletonTrait;
+
+class CommandManager {
+    use SingletonTrait;
+
+    public function getCommands(): array {
+        return [
+            new EssentialsCommand(),
+            new BackCommand(),
+            new BroadcastCommand(),
+            new ClearCommand(),
+            new FeedCommand(),
+            new FlyCommand(),
+            new HealCommand(),
+            new PingCommand(),
+        ];
+    }
+
+    public function registerCommands(): void {
+        foreach ($this->getCommands() as $command) {
+            if ($command instanceof Command) {
+                Loader::getInstance()->getServer()->getCommandMap()->register("essentials", $command);
+            }
+        }
+    }
+
+    public function unRegisterCommands(array $commands): void {
+        foreach ($commands as $command) {
+            if (($c = Loader::getInstance()->getServer()->getCommandMap()->getCommand($command)) !== null) {
+                Loader::getInstance()->getServer()->getCommandMap()->unregister($c);
+            }
+        }
+    }
+}
