@@ -43,8 +43,8 @@ class TreeCommand extends BaseCommand {
         
         $random = new Random();
         $tree = TreeFactory::get($random, $treeType);
-        if ($tree->canPlaceObject($world, $pos->x, $pos->y, $pos->z, $random)) {
-            $blockTransaction = $tree->getBlockTransaction($world, $pos->x, $pos->y, $pos->z, $random);
+        if ($tree->canPlaceObject($world, $pos->getFloorX(), $pos->getFloorY(), $pos->getFloorZ(), $random)) {
+            $blockTransaction = $tree->getBlockTransaction($world, $pos->getFloorX(), $pos->getFloorY(), $pos->getFloorZ(), $random);
             $blockTransaction?->apply();
             $sender->sendMessage(TextFormat::colorize("&aSpawned tree at &e" . $pos->asVector3()));
         } else {

@@ -4,6 +4,7 @@ main: frostcheat\essentials\Loader
 api: 5.3.0
 website: https://github.com/FrostCheat
 description: Essentials is the essential plugin for Pocketmine-MP servers, providing core features for servers of any size and scale.
+load: POSTWORLD
 author: frostcheat
 
 permissions:
@@ -46,6 +47,8 @@ permissions:
   essentials.command.heal.other:
     default: op
   essentials.command.heal.bypass:
+    default: op
+  essentials.command.near:
     default: op
   essentials.command.nick:
     default: op

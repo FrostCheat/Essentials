@@ -10,6 +10,7 @@ class Session {
     private ?Position $lastPosition = null;
     private array $cooldowns = [];
     private ?string $nick = null;
+    private bool $vanished = false;
     
     public function __construct(string $name) {
         $this->name = $name;
@@ -53,5 +54,13 @@ class Session {
 
     public function setNick(?string $nick): void {
         $this->nick = $nick;
+    }
+
+    public function isVanished(): bool {
+        return $this->vanished;
+    }
+
+    public function setVanished(bool $vanished): void {
+        $this->vanished = $vanished;
     }
 }
