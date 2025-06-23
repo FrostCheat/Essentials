@@ -47,5 +47,15 @@ permissions:
     default: op
   essentials.command.heal.bypass:
     default: op
+  essentials.command.nick:
+    default: op
+  essentials.command.nick.other:
+    default: op
+  essentials.command.nick.reset:
+    default: op
+  essentials.command.nick.reset.other:
+    default: op
   essentials.command.ping:
+    default: true
+  essentials.command.ping.other:
     default: true

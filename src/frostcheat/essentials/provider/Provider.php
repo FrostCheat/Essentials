@@ -40,6 +40,10 @@ class Provider {
                 $session->setCooldowns($data["cooldowns"]);
             }
 
+            if (isset($data["nick"])) {
+                $session->setNick($data["nick"]);
+            }
+
             SessionManager::getInstance()->addSession($session);
         }
     }
@@ -53,10 +57,11 @@ class Provider {
                 "z" => $pos->getZ(),
                 "world" => $pos->getWorld()->getFolderName()
             ] : null,
-            "cooldowns" => $session->getCooldowns()
+            "cooldowns" => $session->getCooldowns(),
+            "nick" => $session->getNick(),
         ];
 
-        $file = $this->dataFolder . strtolower($session->getName()) . ".json";
+        $file = $this->dataFolder . $session->getName() . ".json";
 
         Loader::getInstance()->getServer()->getAsyncPool()->submitTask(new class($file, json_encode($data, JSON_PRETTY_PRINT)) extends AsyncTask {
             public function __construct(

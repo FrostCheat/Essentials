@@ -24,7 +24,11 @@ class PingCommand extends BaseCommand {
         if (isset($args["player"])) {
             $p = Loader::getInstance()->getServer()->getPlayerExact($args["player"]);
             if ($p instanceof Player) {
-                $sender->sendMessage(TextFormat::colorize("&eYour Ping: &a{$sender->getNetworkSession()->getPing()}"));
+                if ($sender->hasPermission("essentials.command.ping.other")) {
+                    $sender->sendMessage(TextFormat::colorize("&e{$p->getName()}'s Ping: &a{$p->getNetworkSession()->getPing()}"));
+                } else {
+                    $sender->sendMessage(TextFormat::colorize("&cYou do not have permission to see other players' ping."));
+                }
             } else {
                 $sender->sendMessage(TextFormat::colorize("&cPlayer is not online"));
             }

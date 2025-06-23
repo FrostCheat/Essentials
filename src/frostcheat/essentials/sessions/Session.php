@@ -9,6 +9,7 @@ class Session {
     private string $name;
     private ?Position $lastPosition = null;
     private array $cooldowns = [];
+    private ?string $nick = null;
     
     public function __construct(string $name) {
         $this->name = $name;
@@ -44,5 +45,13 @@ class Session {
 
     public function setCooldowns(array $cooldowns): void {
         $this->cooldowns = $cooldowns;
+    }
+
+    public function getNick(): ?string {
+        return $this->nick;
+    }
+
+    public function setNick(?string $nick): void {
+        $this->nick = $nick;
     }
 }

@@ -8,7 +8,6 @@ use frostcheat\essentials\utils\ReflectionUtils;
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
 use pocketmine\network\mcpe\protocol\GameRulesChangedPacket;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
@@ -18,24 +17,23 @@ use pocketmine\player\PlayerInfo;
 class EventListener implements Listener {
 
     public function onPreLogin(PlayerPreLoginEvent $event): void {
-        ReflectionUtils::setProperty(
-            PlayerInfo::class, 
-            $event->getPlayerInfo(), 
-            "username", 
-            str_replace(" ","_", $event->getPlayerInfo()->getUsername())
-        );
-    }
-
-    public function onLogin(PlayerLoginEvent $event): void {
-        $player = $event->getPlayer();
-        $session = SessionManager::getInstance()->getSession($player->getName());
-
+        $session = SessionManager::getInstance()->getSession($event->getPlayerInfo()->getUsername()) 
+        ?? SessionManager::getInstance()->getSessionByNick($event->getPlayerInfo()->getUsername());
+        
         if ($session === null) {
-            SessionManager::getInstance()->addSession(new Session($player->getName()));
+            $session = new Session(str_replace(" ","_", $event->getPlayerInfo()->getUsername()));
+            SessionManager::getInstance()->addSession($session);
+        }
+        
+        if (($nick = $session->getNick()) !== null) {
+            ReflectionUtils::setProperty(PlayerInfo::class, $event->getPlayerInfo(), "username", $nick);
         } else {
-            if ($session->getName() !== $player->getName()) {
-                $session->setName($player->getName());
-            }
+            ReflectionUtils::setProperty(
+                PlayerInfo::class, 
+                $event->getPlayerInfo(), 
+                "username", 
+                str_replace(" ","_", $event->getPlayerInfo()->getUsername())
+            );
         }
     }
 
@@ -51,7 +49,7 @@ class EventListener implements Listener {
     public function onTeleport(EntityTeleportEvent $event): void {
         $entity = $event->getEntity();
         if ($entity instanceof Player) {
-            $session = SessionManager::getInstance()->getSession($entity->getName());
+            $session = SessionManager::getInstance()->getSession($entity->getName()) ?? SessionManager::getInstance()->getSessionByNick($entity->getName());
             if ($session !== null) {
                 $session->setLastPosition($event->getFrom());
             }

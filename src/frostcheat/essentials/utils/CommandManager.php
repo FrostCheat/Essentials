@@ -10,6 +10,7 @@ use frostcheat\essentials\commands\FeedCommand;
 use frostcheat\essentials\commands\FlyCommand;
 use frostcheat\essentials\commands\GameModeCommand;
 use frostcheat\essentials\commands\HealCommand;
+use frostcheat\essentials\commands\NickCommand;
 use frostcheat\essentials\commands\PingCommand;
 use frostcheat\essentials\Loader;
 
@@ -29,6 +30,7 @@ class CommandManager {
             new FlyCommand(),
             new GameModeCommand(),
             new HealCommand(),
+            new NickCommand(),
             new PingCommand(),
         ];
     }
