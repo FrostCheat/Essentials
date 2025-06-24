@@ -46,14 +46,14 @@
 
 ---
 
-## 📜 Commands, Permissions & Descriptions
+## 📜 Commands
 
 | Command                 | Permission                                 | Description                                 |
 |-------------------------|---------------------------------------------|---------------------------------------------|
-| `/help`                | `essentials.command.help`                  | Shows available commands                    |
-| `/list`                | `essentials.command.list`                  | Lists online players                        |
-| `/reload`              | `essentials.command.reload`                | Reloads plugin data                         |
-| `/save`                | `essentials.command.save`                  | Saves the world manually                    |
+| `/essentials help`                | `essentials.command.help`                  | Shows available commands                    |
+| `/essentials list`                | `essentials.command.list`                  | Lists all plugin commands                       |
+| `/essentials reload`              | `essentials.command.reload`                | Reloads plugin data                         |
+| `/essentials save`                | `essentials.command.save`                  | Saves the sessions manually                    |
 | `/back`                | `essentials.command.back`                  | Teleports to the previous location          |
 | `/broadcast`           | `essentials.command.broadcast`             | Sends a global server message               |
 | `/burn`                | `essentials.command.burn`                  | Sets you on fire                            |
