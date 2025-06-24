@@ -16,6 +16,7 @@ class Session {
     private bool $vanished = false;
     private ?string $lastPlayer = null;
     private array $tpRequests = [];
+    private bool $godMode = false;
     
     public function __construct(string $name) {
         $this->name = $name;
@@ -140,5 +141,13 @@ class Session {
 
     public function removeTPRequest(TeleportRequest $tpRequest): void {
         unset($this->tpRequests[$tpRequest->getTarget()->getName()]);
+    }
+
+    public function isGodMode(): bool {
+        return $this->godMode;
+    }
+
+    public function setGodMode(bool $godMode): void {
+        $this->godMode = $godMode;
     }
 }

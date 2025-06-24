@@ -42,6 +42,10 @@ permissions:
     default: op
   essentials.command.gamemode.other:
     default: op
+  essentials.command.god:
+    default: op
+  essentials.command.god.other:
+    default: op
   essentials.command.heal:
     default: op
   essentials.command.heal.other:

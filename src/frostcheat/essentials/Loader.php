@@ -2,6 +2,9 @@
 
 namespace frostcheat\essentials;
 
+use frostcheat\essentials\listeners\GodModeListener;
+use frostcheat\essentials\listeners\MainListener;
+use frostcheat\essentials\listeners\PlayerListener;
 use frostcheat\essentials\provider\Provider;
 
 use CortexPE\Commando\PacketHooker;
@@ -38,7 +41,9 @@ class Loader extends PluginBase {
         CommandManager::getInstance()->unRegisterCommands($this->getConfig()->get("un-registerCommands", []));
         CommandManager::getInstance()->registerCommands();
 
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new GodModeListener(), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new MainListener(), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new PlayerListener(), $this);
 
         $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function(): void {
             Provider::getInstance()->saveAllSessions();
