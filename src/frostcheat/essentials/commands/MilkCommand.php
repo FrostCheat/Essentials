@@ -6,6 +6,8 @@ use CortexPE\Commando\args\RawStringArgument;
 use CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\events\PlayerMilkEvent;
 use frostcheat\essentials\Loader;
+use frostcheat\essentials\sessions\SessionManager;
+use frostcheat\essentials\utils\Utils;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
@@ -44,10 +46,22 @@ class MilkCommand extends BaseCommand {
     }
 
     public function clearEffects(Player $player, CommandSender $sender): void {
+        $session = SessionManager::getInstance()->getSession($player->getName());
+        if ($session !== null) {
+            if ($session->getCooldown("milk") > time() && !$sender->hasPermission("essentials.command.milk.bypass")) {
+                $sender->sendMessage(TextFormat::colorize("&cYou must wait " . Utils::date($session->getCooldown("milk") - time()) . " to run this command again."));
+                return;
+            }
+        }
+
         $event = new PlayerMilkEvent($player, $sender);
         $event->call();
         
         if ($event->isCancelled()) return;
+
+        if (!$sender->hasPermission("essentials.command.milk.bypass")) {
+            $session->addCooldown("milk", time() + (int) Loader::getInstance()->getConfig()->get("milk.cooldown", 120));
+        }
         
         $player->getEffects()->clear();
 
