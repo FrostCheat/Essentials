@@ -2,10 +2,11 @@
 
 namespace frostcheat\essentials\utils;
 
-use frostcheat\essentials\commands\essentials\EssentialsCommand;
+use frostcheat\essentials\commands\BurnCommand;
 use frostcheat\essentials\commands\BackCommand;
 use frostcheat\essentials\commands\BroadcastCommand;
 use frostcheat\essentials\commands\ClearCommand;
+use frostcheat\essentials\commands\essentials\EssentialsCommand;
 use frostcheat\essentials\commands\FeedCommand;
 use frostcheat\essentials\commands\fix\FixCommand;
 use frostcheat\essentials\commands\FlyCommand;
@@ -34,10 +35,11 @@ class CommandManager {
 
     public function getCommands(): array {
         return [
-            new EssentialsCommand(),
             new BackCommand(),
             new BroadcastCommand(),
+            new BurnCommand(),
             new ClearCommand(),
+            new EssentialsCommand(),
             new FeedCommand(),
             new FixCommand(),
             new FlyCommand(),

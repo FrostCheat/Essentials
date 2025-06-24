@@ -24,6 +24,10 @@ permissions:
     default: op
   essentials.command.broadcast:
     default: op
+  essentials.command.burn:
+    default: op
+  essentials.command.burn.other:
+    default: op
   essentials.command.clear:
     default: true
   essentials.command.clear.other:
