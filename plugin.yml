@@ -34,6 +34,16 @@ permissions:
     default: op
   essentials.command.feed.bypass:
     default: op
+  essentials.command.fix:
+    default: op
+  essentials.command.fix.all:
+    default: op
+  essentials.command.fix.all.other:
+    default: op
+  essentials.command.fix.hand:
+    default: op
+  essentials.command.fix.hand.other:
+    default: op
   essentials.command.fly:
     default: op
   essentials.command.fly.other:
@@ -51,6 +61,10 @@ permissions:
   essentials.command.heal.other:
     default: op
   essentials.command.heal.bypass:
+    default: op
+  essentials.command.milk:
+    default: op
+  essentials.command.milk.other:
     default: op
   essentials.command.near:
     default: op

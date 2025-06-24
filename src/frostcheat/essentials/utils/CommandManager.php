@@ -7,9 +7,12 @@ use frostcheat\essentials\commands\BackCommand;
 use frostcheat\essentials\commands\BroadcastCommand;
 use frostcheat\essentials\commands\ClearCommand;
 use frostcheat\essentials\commands\FeedCommand;
+use frostcheat\essentials\commands\fix\FixCommand;
 use frostcheat\essentials\commands\FlyCommand;
 use frostcheat\essentials\commands\GameModeCommand;
+use frostcheat\essentials\commands\GodCommand;
 use frostcheat\essentials\commands\HealCommand;
+use frostcheat\essentials\commands\MilkCommand;
 use frostcheat\essentials\commands\NearCommand;
 use frostcheat\essentials\commands\NickCommand;
 use frostcheat\essentials\commands\PingCommand;
@@ -36,8 +39,11 @@ class CommandManager {
             new BroadcastCommand(),
             new ClearCommand(),
             new FeedCommand(),
+            new FixCommand(),
             new FlyCommand(),
             new GameModeCommand(),
+            new GodCommand(),
+            new MilkCommand(),
             new HealCommand(),
             new NearCommand(),
             new NickCommand(),
