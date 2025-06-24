@@ -11,18 +11,18 @@ use pocketmine\world\Position;
 class PlayerBackEvent extends PlayerEvent implements Cancellable {
     use CancellableTrait;
 
-    private $position;
+    private Position $position;
 
-    public function __construct(Player $player, Position $position){
+    public function __construct(Player $player, Position $position) {
         $this->player = $player;
         $this->position = $position;
     }
 
-    public function getPosition() : Position{
+    public function getPosition(): Position {
         return $this->position;
     }
 
-    public function setPosition(Position $position) : void{
+    public function setPosition(Position $position): void {
         $this->position = $position;
     }
 }

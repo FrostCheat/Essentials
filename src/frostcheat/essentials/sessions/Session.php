@@ -4,6 +4,7 @@ namespace frostcheat\essentials\sessions;
 
 use frostcheat\essentials\Loader;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use pocketmine\world\Position;
 
 class Session {
@@ -14,6 +15,7 @@ class Session {
     private ?string $nick = null;
     private bool $vanished = false;
     private ?string $lastPlayer = null;
+    private array $tpRequests = [];
     
     public function __construct(string $name) {
         $this->name = $name;
@@ -98,5 +100,45 @@ class Session {
 
     public function setLastPlayer(string $player): void {
         $this->lastPlayer = $player;
+    }
+
+    public function getTPRequests(): array {
+        return $this->tpRequests;
+    }
+
+    public function addTPRequest(TeleportRequest $tpRequest): void {
+        $this->tpRequests[$tpRequest->getTarget()->getName()] = $tpRequest;
+
+        $player = $this->getPlayer();
+        if ($player === null) return;
+
+        $message = "&c" . $tpRequest->getTarget()->getName(). " &6has requested " .
+            ($tpRequest->isHere() ? "you to teleport to them" : "to teleport to you") . ".\n" .
+            "&6To teleport, type &c/tpaccept&6.\n&6To deny this request, type &c/tpdeny&6.\n" .
+            "&6This request will timeout after &c" .
+            Loader::getInstance()->getConfig()->get("tpa.timeout", 120) . " seconds&6.";
+
+        $player->sendMessage(TextFormat::colorize($message));
+    }
+
+
+    public function getTPRequest(string $name): ?TeleportRequest {
+        return isset($this->tpRequests[$name]) && !$this->tpRequests[$name]->isExpired()
+            ? $this->tpRequests[$name]
+            : null;
+    }
+
+
+    public function getFirstValidRequest(): ?TeleportRequest {
+        foreach ($this->tpRequests as $tpRequest) {
+            if (!$tpRequest->isExpired()) {
+                return $tpRequest;
+            }
+        }
+        return null;
+    }
+
+    public function removeTPRequest(TeleportRequest $tpRequest): void {
+        unset($this->tpRequests[$tpRequest->getTarget()->getName()]);
     }
 }

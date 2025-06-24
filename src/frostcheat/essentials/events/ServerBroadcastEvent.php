@@ -13,20 +13,20 @@ class ServerBroadcastEvent extends ServerEvent implements Cancellable {
     protected $message;
     protected $player;
 
-    public function __construct(CommandSender $player, string $message){
+    public function __construct(CommandSender $player, string $message) {
         $this->player = $player;
         $this->message = $message;
     }
 
-    public function getPlayer() : CommandSender{
+    public function getPlayer(): CommandSender {
         return $this->player;
     }
 
-    public function getMessage() : string {
+    public function getMessage(): string {
         return $this->message;
     }
 
-    public function setMessage(string $message) : void {
+    public function setMessage(string $message): void {
         $this->message = $message;
     }
 }

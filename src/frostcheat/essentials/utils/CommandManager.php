@@ -15,6 +15,10 @@ use frostcheat\essentials\commands\NickCommand;
 use frostcheat\essentials\commands\PingCommand;
 use frostcheat\essentials\commands\ReplyCommand;
 use frostcheat\essentials\commands\TellCommand;
+use frostcheat\essentials\commands\tpa\TpAcceptCommand;
+use frostcheat\essentials\commands\tpa\TpaCommand;
+use frostcheat\essentials\commands\tpa\TpaHereCommand;
+use frostcheat\essentials\commands\tpa\TpDenyCommand;
 use frostcheat\essentials\commands\TreeCommand;
 use frostcheat\essentials\commands\VanishCommand;
 use frostcheat\essentials\Loader;
@@ -40,6 +44,10 @@ class CommandManager {
             new PingCommand(),
             new ReplyCommand(),
             new TellCommand(),
+            new TpAcceptCommand(),
+            new TpaCommand(),
+            new TpaHereCommand(),
+            new TpDenyCommand(),
             new TreeCommand(),
             new VanishCommand()
         ];

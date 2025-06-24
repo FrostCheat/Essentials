@@ -68,6 +68,14 @@ permissions:
     default: true
   essentials.tell.see:
     default: op
+  essentials.comman.tpa:
+    default: true
+  essentials.comman.tpahere:
+    default: true
+  essentials.comman.tpaccept:
+    default: true
+  essentials.comman.tpdeny:
+    default: true
   essentials.command.tree:
     default: op
   essentials.command.vanish:

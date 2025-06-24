@@ -4,6 +4,7 @@ namespace frostcheat\essentials\commands;
 
 use frostcheat\essentials\events\PlayerPrivateMessageEvent;
 use frostcheat\essentials\Loader;
+use frostcheat\essentials\sessions\SessionManager;
 use frostcheat\essentials\utils\Utils;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -35,6 +36,11 @@ class TellCommand extends Command {
             $event->call();
 
             if ($event->isCancelled()) return;
+        }
+
+        $session = SessionManager::getInstance()->getSession($target->getName());
+        if ($session !== null) {
+            $session->setLastPlayer($sender->getName());
         }
 
         $sender->sendMessage(TextFormat::colorize("&7(To &g{$target->getName()}&7) &e$str"));

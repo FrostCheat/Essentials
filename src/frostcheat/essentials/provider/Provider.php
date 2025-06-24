@@ -68,6 +68,12 @@ class Provider {
 
         $file = $this->dataFolder . $session->getName() . ".json";
 
+        foreach ($session->getTPRequests() as $tpRequest) {
+            if ($tpRequest->isExpired()) {
+                $session->removeTPRequest($tpRequest);
+            }
+        }
+
         Loader::getInstance()->getServer()->getAsyncPool()->submitTask(new class($file, json_encode($data, JSON_PRETTY_PRINT)) extends AsyncTask {
             public function __construct(
                 private string $file,
