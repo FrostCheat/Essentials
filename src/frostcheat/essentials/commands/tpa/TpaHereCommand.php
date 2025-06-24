@@ -15,7 +15,7 @@ use pocketmine\utils\TextFormat;
 class TpaHereCommand extends BaseCommand {
     public function __construct() {
         parent::__construct(Loader::getInstance(), "tpahere", "Request a player to teleport to you");
-        $this->setPermission("essentials.comman.tpahere");
+        $this->setPermission("essentials.command.tpahere");
     }
 
     public function prepare(): void {

@@ -15,7 +15,7 @@ use pocketmine\utils\TextFormat;
 class TpaCommand extends BaseCommand {
     public function __construct() {
         parent::__construct(Loader::getInstance(), "tpa", "Request a player to teleport");
-        $this->setPermission("essentials.comman.tpa");
+        $this->setPermission("essentials.command.tpa");
     }
 
     public function prepare(): void {

@@ -16,7 +16,7 @@ use pocketmine\utils\TextFormat;
 class TpAcceptCommand extends BaseCommand {
     public function __construct() {
         parent::__construct(Loader::getInstance(), "tpaccept", "Accept a player's teleport request");
-        $this->setPermission("essentials.comman.tpaccept");
+        $this->setPermission("essentials.command.tpaccept");
     }
 
     public function prepare(): void {

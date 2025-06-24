@@ -90,13 +90,13 @@ permissions:
     default: true
   essentials.tell.see:
     default: op
-  essentials.comman.tpa:
+  essentials.command.tpa:
     default: true
-  essentials.comman.tpahere:
+  essentials.command.tpahere:
     default: true
-  essentials.comman.tpaccept:
+  essentials.command.tpaccept:
     default: true
-  essentials.comman.tpdeny:
+  essentials.command.tpdeny:
     default: true
   essentials.command.tree:
     default: op

@@ -16,7 +16,7 @@ use pocketmine\utils\TextFormat;
 class TpDenyCommand extends BaseCommand {
     public function __construct() {
         parent::__construct(Loader::getInstance(), "tpdeny", "Deny a teleportation request");
-        $this->setPermission("essentials.comman.tpdeny");
+        $this->setPermission("essentials.command.tpdeny");
     }
 
     public function prepare(): void {

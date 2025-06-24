@@ -13,7 +13,7 @@ use pocketmine\utils\TextFormat;
 
 class BurnCommand extends BaseCommand {
     public function __construct() {
-        parent::__construct(Loader::getInstance(), "burn", "Set on fire a player" , ["v"]);
+        parent::__construct(Loader::getInstance(), "burn", "Set on fire a player");
         $this->setPermission("essentials.command.burn");
     }
 

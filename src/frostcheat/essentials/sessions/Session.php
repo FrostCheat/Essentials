@@ -72,22 +72,22 @@ class Session {
 
     public function setVanished(bool $vanished): void {
         $this->vanished = $vanished;
-
         $player = $this->getPlayer();
+
         if ($player === null) return;
 
         $server = Loader::getInstance()->getServer();
 
-        if ($vanished) {
-            $server->removeOnlinePlayer($player);
-            foreach ($server->getOnlinePlayers() as $target) {
+        foreach ($server->getOnlinePlayers() as $target) {
+            if ($player->getId() === $target->getId()) {
+                continue;
+            }
+
+            if ($vanished) {
                 if (!$target->hasPermission("essentials.vanish.see")) {
                     $target->hidePlayer($player);
                 }
-            }
-        } else {
-            $server->addOnlinePlayer($player);
-            foreach ($server->getOnlinePlayers() as $target) {
+            } else {
                 if (!$target->canSee($player)) {
                     $target->showPlayer($player);
                 }
