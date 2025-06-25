@@ -2,7 +2,7 @@
 
 namespace frostcheat\essentials\commands\essentials\subcommands;
 
-use CortexPE\Commando\BaseSubCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseSubCommand;
 use frostcheat\essentials\provider\Provider;
 use frostcheat\essentials\sessions\SessionManager;
 use pocketmine\command\CommandSender;

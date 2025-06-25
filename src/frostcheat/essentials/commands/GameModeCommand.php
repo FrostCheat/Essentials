@@ -2,8 +2,8 @@
 
 namespace frostcheat\essentials\commands;
 
-use CortexPE\Commando\args\RawStringArgument;
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\args\RawStringArgument;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\commands\args\GameModeArgument;
 use frostcheat\essentials\Loader;
 use pocketmine\command\CommandSender;

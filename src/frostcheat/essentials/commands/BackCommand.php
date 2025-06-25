@@ -2,7 +2,7 @@
 
 namespace frostcheat\essentials\commands;
 
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\events\PlayerBackEvent;
 use frostcheat\essentials\Loader;
 use frostcheat\essentials\sessions\SessionManager;

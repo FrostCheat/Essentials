@@ -2,7 +2,7 @@
 
 namespace frostcheat\essentials\commands\essentials\subcommands;
 
-use CortexPE\Commando\BaseSubCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseSubCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 

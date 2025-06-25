@@ -2,8 +2,8 @@
 
 namespace frostcheat\essentials\commands\tpa;
 
-use CortexPE\Commando\args\RawStringArgument;
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\args\RawStringArgument;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\events\TeleportRespondEvent;
 use frostcheat\essentials\Loader;
 use frostcheat\essentials\sessions\Session;

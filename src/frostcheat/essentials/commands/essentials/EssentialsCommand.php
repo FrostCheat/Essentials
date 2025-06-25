@@ -2,7 +2,7 @@
 
 namespace frostcheat\essentials\commands\essentials;
 
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\commands\essentials\subcommands\HelpSubCommand;
 use frostcheat\essentials\commands\essentials\subcommands\ListSubCommand;
 use frostcheat\essentials\commands\essentials\subcommands\ReloadSubCommand;

@@ -2,8 +2,8 @@
 
 namespace frostcheat\essentials\commands\fix\subcommands;
 
-use CortexPE\Commando\args\RawStringArgument;
-use CortexPE\Commando\BaseSubCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\args\RawStringArgument;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseSubCommand;
 use frostcheat\essentials\events\PlayerFixEvent;
 use frostcheat\essentials\Loader;
 use frostcheat\essentials\utils\CommandManager;

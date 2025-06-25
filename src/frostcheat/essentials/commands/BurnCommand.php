@@ -2,9 +2,9 @@
 
 namespace frostcheat\essentials\commands;
 
-use CortexPE\Commando\args\IntegerArgument;
-use CortexPE\Commando\args\RawStringArgument;
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\args\IntegerArgument;
+use frostcheat\essentials\libs\CortexPE\Commando\args\RawStringArgument;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\events\PlayerBurnEvent;
 use frostcheat\essentials\Loader;
 use pocketmine\command\CommandSender;

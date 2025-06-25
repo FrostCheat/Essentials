@@ -2,7 +2,7 @@
 
 namespace frostcheat\essentials\commands;
 
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\commands\args\TreeArgument;
 use frostcheat\essentials\events\SpawnTreeEvent;
 use frostcheat\essentials\Loader;

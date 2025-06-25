@@ -2,7 +2,7 @@
 
 namespace frostcheat\essentials\commands\fix;
 
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\commands\fix\subcommands\AllSubCommand;
 use frostcheat\essentials\commands\fix\subcommands\HandSubCommand;
 use frostcheat\essentials\Loader;

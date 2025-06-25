@@ -2,8 +2,8 @@
 
 namespace frostcheat\essentials\commands;
 
-use CortexPE\Commando\args\RawStringArgument;
-use CortexPE\Commando\BaseCommand;
+use frostcheat\essentials\libs\CortexPE\Commando\args\RawStringArgument;
+use frostcheat\essentials\libs\CortexPE\Commando\BaseCommand;
 use frostcheat\essentials\events\PlayerChangeVanishEvent;
 use frostcheat\essentials\Loader;
 use frostcheat\essentials\sessions\SessionManager;

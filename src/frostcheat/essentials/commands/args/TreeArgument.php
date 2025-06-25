@@ -2,7 +2,7 @@
 
 namespace frostcheat\essentials\commands\args;
 
-use CortexPE\Commando\args\StringEnumArgument;
+use frostcheat\essentials\libs\CortexPE\Commando\args\StringEnumArgument;
 
 use pocketmine\command\CommandSender;
 use pocketmine\world\generator\object\TreeType;

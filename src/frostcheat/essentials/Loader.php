@@ -7,11 +7,12 @@ use frostcheat\essentials\listeners\MainListener;
 use frostcheat\essentials\listeners\PlayerListener;
 use frostcheat\essentials\provider\Provider;
 
-use CortexPE\Commando\PacketHooker;
+use frostcheat\essentials\libs\CortexPE\Commando\PacketHooker;
 
 use frostcheat\essentials\utils\CommandManager;
-use JackMD\ConfigUpdater\ConfigUpdater;
-use JackMD\UpdateNotifier\UpdateNotifier;
+use frostcheat\essentials\plugin\PluginNotifier;
+use frostcheat\essentials\libs\JackMD\ConfigUpdater\ConfigUpdater;
+use frostcheat\essentials\libs\JackMD\UpdateNotifier\UpdateNotifier;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
@@ -29,6 +30,7 @@ class Loader extends PluginBase {
 
     public function onEnable(): void {
         UpdateNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion());
+        PluginNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion(), $this->getDescription()->getAuthors());
         if (ConfigUpdater::checkUpdate($this, $this->getConfig(), "config-version", self::CONFIG_VERSION)) {
             $this->reloadConfig();
         }
